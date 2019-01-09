@@ -1,0 +1,40 @@
+#!/bin/sh
+
+SSID=""
+PASSWORD=""
+
+while [ true ]
+do
+    echo "1. start"
+    echo "2. stop"
+    echo "3. status"
+    echo "4. exit"
+    echo "5. stop & exit"
+
+    read -p "select: " selection
+    
+    case ${selection} in
+        "1")
+            sudo ifconfig wlan0 down
+            sudo create_ap -w 2 --hidden --daemon wlan0 eth0 ${SSID} ${PASSWORD}
+            ;;
+        "2")
+            sudo create_ap --stop wlan0
+            sudo ifconfig wlan0 down
+            ;;
+        "3")
+            sudo ifconfig wlan0
+            ;;
+        "4")
+            exit
+            ;;
+        "5")
+            sudo create_ap --stop wlan0
+            sudo ifconfig wlan0 down
+            exit
+            ;;
+        *)
+            ;;
+    esac
+done
+
