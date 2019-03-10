@@ -17,6 +17,8 @@ apt install --upgrade --yes python3-pip
 apt install --upgrade --yes build-essential
 apt install --upgrade --yes git
 apt install --upgrade --yes vim
+apt install --upgrade --yes shadowsocks
+update-rc.d shadowsocks remove
 
 awk '{if (/PasswordAuthentication/) gsub($2, "no");print}' /etc/ssh/sshd_config > /etc/ssh/sshd_config.tmp && mv /etc/ssh/sshd_config.tmp /etc/ssh/sshd_config
 awk 'BEGIN { FS=":"; OFS=":"; } {if ($1=="root" && $7!="/bin/tcsh") { $7="/bin/tcsh"; print; } else print; }' /etc/passwd > /etc/passwd.tmp && mv /etc/passwd.tmp /etc/passwd
@@ -26,6 +28,10 @@ pip3 install shadowsocks
 cd sss
 make && make install && make clean
 cd ..
+
+cp sss/sss /etc/init.d/
+chmod 755 /etc/init.d/sss
+update-rc.d sss defaults
 
 # start shadowsocks server
 sss start
