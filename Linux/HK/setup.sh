@@ -3,7 +3,7 @@
 # config system
 cp ../common/config_files/csh.cshrc /etc/
 cp ../common/config_files/vimrc /etc/vim/
-cp ../common/config_files/sources.list /etc/apt/
+#cp ../common/config_files/sources.list /etc/apt/
 cp config_files/resolv.conf /etc/
 cp config_files/ssh/authorized_keys ~/.ssh/
 cp config_files/ssh/ssh_config /etc/ssh/
