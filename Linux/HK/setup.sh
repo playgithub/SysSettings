@@ -24,7 +24,6 @@ awk '{if (/PasswordAuthentication/) gsub($2, "no");print}' /etc/ssh/sshd_config 
 awk 'BEGIN { FS=":"; OFS=":"; } {if ($1=="root" && $7!="/bin/tcsh") { $7="/bin/tcsh"; print; } else print; }' /etc/passwd > /etc/passwd.tmp && mv /etc/passwd.tmp /etc/passwd
 
 # prepare shadowsocks
-pip3 install shadowsocks
 cd sss
 make && make install && make clean
 cd ..
