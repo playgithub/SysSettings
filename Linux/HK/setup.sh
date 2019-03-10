@@ -28,7 +28,7 @@ cd sss
 make && make install && make clean
 cd ..
 
-cp sss/sss /etc/init.d/
+cp sss/sss_service_script/sss /etc/init.d/
 chmod 755 /etc/init.d/sss
 update-rc.d sss defaults
 
